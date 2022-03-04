@@ -20,7 +20,7 @@ class KITTI(BaseDataset):
         self.num_classes = len(self.class_names)
         self.class_ids_dict = {cls_name: cls_id for cls_id, cls_name in enumerate(self.class_names)}
 
-        self.data_dir = os.path.join(cfg.data_dir, 'kitti')
+        self.data_dir = os.path.join('/content/SqueezeDet-PyTorch/data', 'Kitti')
         self.sample_ids, self.sample_set_path = self.get_sample_ids()
 
         self.grid_size = tuple(x // 16 for x in self.input_size)  # anchors grid

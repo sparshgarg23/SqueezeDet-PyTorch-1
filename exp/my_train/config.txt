@@ -17,14 +17,14 @@ bbox_loss_weight: 6.0
 chunk_sizes: [16]
 class_loss_weight: 1.0
 class_names: ('Car', 'Pedestrian', 'Cyclist')
-data_dir: /home/qiujueqin/PycharmProjects/squeezedet/data
-dataset: kitti
+data_dir: /content/SqueezeDet-PyTorch/data
+dataset: Kitti
 debug: 0
-debug_dir: /home/qiujueqin/PycharmProjects/squeezedet/exp/my_train/debug
+debug_dir: /content/SqueezeDet-PyTorch/exp/my_train/debug
 device: cuda
 drift_prob: 1.0
 dropout_prob: 0.5
-exp_dir: /home/qiujueqin/PycharmProjects/squeezedet/exp
+exp_dir: /content/SqueezeDet-PyTorch/exp
 exp_id: my_train
 flip_prob: 0.5
 forbid_resize: False
@@ -44,15 +44,15 @@ no_eval: False
 not_cuda_benchmark: False
 num_anchors: 16848
 num_classes: 3
-num_epochs: 300
+num_epochs: 100
 num_iters: -1
 num_workers: 4
 positive_score_loss_weight: 3.75
 print_interval: 10
 rgb_mean: [[[93.877 98.801 95.923]]]
 rgb_std: [[[78.782 80.13  81.2  ]]]
-root_dir: /home/qiujueqin/PycharmProjects/squeezedet
-save_dir: /home/qiujueqin/PycharmProjects/squeezedet/exp/my_train
+root_dir: /content/SqueezeDet-PyTorch
+save_dir: /content/SqueezeDet-PyTorch/exp/my_train
 save_intervals: 1
 score_thresh: 0.3
 seed: 42

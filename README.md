@@ -1,6 +1,4 @@
-<div align="center">
-<img src="README/squeezedet_pytorch.gif" width="860">
-</div>
+
 
 
 
@@ -8,8 +6,8 @@
 
 An unofficial PyTorch reimplementation of [SqueezeDet](https://arxiv.org/abs/1612.01051), with better performance on KITTI benchmark than the official [Tensorflow version](https://github.com/BichenWuUCB/squeezeDet) (and cleaner codes!)
 
-Currently only SqueezeDet architecture is supported. SqueezeDet+ is coming soon.
-
+A lot of the code has been borrowed from https://github.com/QiuJueqin/SqueezeDet-PyTorch
+The purpose was to understand Squeeze Det and see how it performs on KITTI
 
 
 # Performance
@@ -22,25 +20,7 @@ Currently only SqueezeDet architecture is supported. SqueezeDet+ is coming soon.
 |    Paper    |        90.2 / 84.7 / 73.9      | **82.9** / 75.4 / 72.1 |       77.1 / 68.3 / 65.8       |    76.7    |
 
 
-# Speed
 
-### Training
-
-KITTI dataset, 1248\*384 resolution:
-
-|   Machine    |                    Time                     |
-|--------------|---------------------------------------------|
-|  V100 + SSD  |   ~36s/epoch (3740 images, 20 batch size)   |
-|  1060 + HDD  |   ~95s/epoch (3740 images, 16 batch size)   |
-
-### Inference
-
-KITTI dataset, 1248\*384 resolution:
-
-|   Machine    |                 Time                |
-|--------------|-------------------------------------|
-|  V100 + SSD  |  117FPS (8 threads, 20 batch size)  |
-|  1060 + HDD  |  58FPS (4 threads, 20 batch size)   |
 
 
 
@@ -48,13 +28,10 @@ KITTI dataset, 1248\*384 resolution:
 
 ### Environment
 
-This project was developed and tested on Ubuntu 16.04, with Python 3.6 and PyTorch 1.1.0.
+This project was developed and tested on Colab.
 
 ### Installation
 
-Let's call the top level directory of this repo `$ROOT_DIR`.
-
-- (Optional) Create a virtual conda environment or Docker container.
 
 - Clone this repository:
 
@@ -62,12 +39,7 @@ Let's call the top level directory of this repo `$ROOT_DIR`.
   git clone https://github.com/QiuJueqin/SqueezeDet-PyTorch.git
   ```
 
-- Install requirements:
 
-  ```Shell
-  cd $ROOT_DIR
-  pip install -r requirements.txt
-  ```
 
 ### Run demo
 
@@ -81,10 +53,10 @@ python main.py demo
 That's it. All pre-trained model and sample images have been included in the repo. If everything goes well you will see detection results like this:
 
 <div align="center">
-<img src="README/002506.png" width="960">
+<img src="README/000094.png" width="960">
 </div>
 
-By default we use CPU in demo mode. Set `gpus` to 0 in [demo.py](src/demo.py#L20) to use GPU.
+
 
 ### Training & evaluation
 
@@ -139,7 +111,7 @@ By default we use CPU in demo mode. Set `gpus` to 0 in [demo.py](src/demo.py#L20
   
   ```Shell
   cd $ROOT_DIR/src
-  python main.py eval --load_model ../models/squeezedet_kitti_epoch290.pth --exp_id my_eval
+  python main.py eval --load_model ../models/squeezedet_kitti_epoch280.pth --exp_id my_eval
   ```
 
   and you will get results like this:
@@ -194,40 +166,19 @@ By default we use CPU in demo mode. Set `gpus` to 0 in [demo.py](src/demo.py#L20
   Here are loss curve and mAP curve from one training process:
 
   <div align="center">
-  <img src="README/loss_mAP.png" width="960">
+  <img src="README/loss.png" width="960">
   </div>
 
-### Train on your own dataset
+  <div align="center">
+  <img src="README/mAP.png" width="960">
+  </div>
 
-- Create a dataset class inherited from [`BaseDataset`](src/datasets/base.py#L10), with your own images and annotations loading methods. See [kitti.py](src/datasets/kitti.py) for reference.
 
-- Register new dataset in [`load_dataset`](src/utils/misc.py#L19) function.
-
-- Compute dataset's rgb mean and rgb std values by running:
-
-  ```Shell
-  cd $ROOT_DIR/src/utils
-  python compute_dataset_mean_and_std.py
-  ```
-
-- Compute dataset's optimal anchors seed by running:
-
-  ```Shell
-  cd $ROOT_DIR/src/utils
-  python compute_dataset_seed_anchors.py
-  ```
-
-- Start training:
-
-  ```Shell
-  cd $ROOT_DIR/src
-  python main.py train --dataset YOUR_DATASET
   ```
 
 
 
 # License
 
-Copyright 2020 Qiu Jueqin
 
 Licensed under [MIT](http://opensource.org/licenses/MIT).

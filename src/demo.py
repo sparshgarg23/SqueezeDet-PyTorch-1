@@ -12,19 +12,19 @@ from engine.detector import Detector
 from model.squeezedet import SqueezeDet
 from utils.config import Config
 from utils.model import load_model
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def demo(cfg):
     # prepare configurations
     cfg.load_model = '../models/squeezedet_kitti_epoch280.pth'
     cfg.gpus = [-1]  # -1 to use CPU
     cfg.debug = 2  # to visualize detection boxes
-    dataset = KITTI('val', cfg)
-    cfg = Config().update_dataset_info(cfg, dataset)
+    #dataset = KITTI('val', cfg)
+    #cfg = Config().update_dataset_info(cfg, dataset)
 
     # preprocess image to match model's input resolution
-    preprocess_func = dataset.preprocess
-    del dataset
+    #preprocess_func = dataset.preprocess
+    #del dataset
 
     # prepare model & detector
     model = SqueezeDet(cfg)

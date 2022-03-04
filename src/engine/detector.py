@@ -41,7 +41,8 @@ class Detector(object):
 
             if self.cfg.debug == 2:
                 image = image_postprocess(batch['image'][b].cpu().numpy().transpose(1, 2, 0), image_meta)
-                save_path = os.path.join(self.cfg.debug_dir, image_meta['image_id'] + '.png')
+                save_path = os.path.join("/content/", image_meta['image_id'] + '.png')
+                print(save_path)
                 visualize_boxes(image, det['class_ids'], det['boxes'], det['scores'],
                                 class_names=self.cfg.class_names,
                                 save_path=save_path,

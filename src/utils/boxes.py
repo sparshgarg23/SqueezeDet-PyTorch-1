@@ -5,6 +5,8 @@ import os
 
 import numpy as np
 import cv2
+from IPython.display import Image
+from google.colab.patches import cv2_imshow
 
 EPSILON = 1E-10
 
@@ -187,14 +189,21 @@ def visualize_boxes(image, class_ids, boxes, scores=None, class_names=None, save
                               class_colors[class_id].tolist(), -1)
         image = cv2.putText(image, text, (bbox[0] + 4, bbox[1] - 4), font,
                             fontScale=.5, color=(255, 255, 255), thickness=1, lineType=cv2.LINE_AA)
+    cv2.imwrite(save_path,image[:,:,::-1])
 
     if show:
+        print(show)
         title = '{} (press any key to continue)'.format(os.path.basename(save_path))
-        cv2.imshow(title, image[:, :, ::-1])
-        cv2.waitKey()
-        cv2.destroyWindow(title)
+        Image(image[:,:,::-1])
+        #cv2_imshow(image[:,:,::-1])
+        #cv2.imshow(title, image[:, :, ::-1])
+        #cv2.waitKey()
+        #cv2.destroyWindow(title)
     else:
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        if not cv2.imwrite(save_path,image[:,:,::-1]):
+            raise Exception('could not save image')
+        
         cv2.imwrite(save_path, image[:, :, ::-1])
 
 
