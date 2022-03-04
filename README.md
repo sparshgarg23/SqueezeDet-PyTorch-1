@@ -70,14 +70,14 @@ That's it. All pre-trained model and sample images have been included in the rep
 - Download KITTI object detection dataset ([images](http://www.cvlibs.net/download.php?file=data_object_image_2.zip) and [labels](http://www.cvlibs.net/download.php?file=data_object_label_2.zip)) to your disk, unzip them and you will get two directories:  `training/` and `testing/`. Create a symbolic link to `data/kitti` of the working directory:
 
   ```Shell
-  mkdir $ROOT_DIR/data/Kitti
+  mkdir $ROOT_DIR/data/kitti
   ln -s training/ testing/ $ROOT_DIR/data/kitti
   ```
 
 - Then read all samples' ID into a `trainval.txt` file:
 
   ```Shell
-  cd $ROOT_DIR/data/Kitti
+  cd $ROOT_DIR/data/kitti
   mkdir image_sets
   cd ./image_sets
   ls ../training/image_2/ | grep ".png" | sed s/.png// > trainval.txt
