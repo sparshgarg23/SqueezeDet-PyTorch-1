@@ -93,7 +93,7 @@ That's it. All pre-trained model and sample images have been included in the rep
   A `train.txt` and a `val.txt` files will be generated that record the sample IDs for training and validation sets. Now the structure of your data folder should look like:
 
   ```plain
-  $ROOT_DIT/data/Kitti/
+  $ROOT_DIT/data/kitti/
                     |--training/
                     |     |-- image_2/00****.png
                     |     L-- label_2/00****.txt
