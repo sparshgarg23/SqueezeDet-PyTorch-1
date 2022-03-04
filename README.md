@@ -36,10 +36,10 @@ This project was developed and tested on Colab.
 - Clone this repository:
 
   ```Shell
-  git clone https://github.com/QiuJueqin/SqueezeDet-PyTorch.git
+  git clone https://github.com/sparshgarg23/SqueezeDet-PyTorch-1
   ```
 
-
+Here ROOT_DIR is simply content/SqueezeDet-Pytorch-1
 
 ### Run demo
 
@@ -65,14 +65,14 @@ That's it. All pre-trained model and sample images have been included in the rep
 - Download KITTI object detection dataset ([images](http://www.cvlibs.net/download.php?file=data_object_image_2.zip) and [labels](http://www.cvlibs.net/download.php?file=data_object_label_2.zip)) to your disk, unzip them and you will get two directories:  `training/` and `testing/`. Create a symbolic link to `data/kitti` of the working directory:
 
   ```Shell
-  mkdir $ROOT_DIR/data/kitti
+  mkdir $ROOT_DIR/data/Kitti
   ln -s training/ testing/ $ROOT_DIR/data/kitti
   ```
 
 - Then read all samples' ID into a `trainval.txt` file:
 
   ```Shell
-  cd $ROOT_DIR/data/kitti
+  cd $ROOT_DIR/data/Kitti
   mkdir image_sets
   cd ./image_sets
   ls ../training/image_2/ | grep ".png" | sed s/.png// > trainval.txt
@@ -88,7 +88,7 @@ That's it. All pre-trained model and sample images have been included in the rep
   A `train.txt` and a `val.txt` files will be generated that record the sample IDs for training and validation sets. Now the structure of your data folder should look like:
 
   ```plain
-  $ROOT_DIT/data/kitti/
+  $ROOT_DIT/data/Kitti/
                     |--training/
                     |     |-- image_2/00****.png
                     |     L-- label_2/00****.txt
