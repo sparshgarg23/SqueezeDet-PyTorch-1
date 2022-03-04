@@ -8,6 +8,11 @@ An unofficial PyTorch reimplementation of [SqueezeDet](https://arxiv.org/abs/161
 
 A lot of the code has been borrowed from https://github.com/QiuJueqin/SqueezeDet-PyTorch
 The purpose was to understand Squeeze Det and see how it performs on KITTI
+For my case I trained the model for 223 epochs approximately due to limited resources(even colab pro has its limitations)
+Then I used the model trained by QiuJuqin to evaluate the model's performance on KITTI
+Special thanks to QiuJueqin for open sourcing his work
+
+
 
 
 # Performance
